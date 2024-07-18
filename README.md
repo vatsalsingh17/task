@@ -40,10 +40,5 @@ Task-filter Component-
 Task service- 
     A service called `Task` is implemented to manage tasks. This service has methods for adding, deleting, updating, and retrieving tasks.
 
-![image](https://github.com/pracheesingh03/myTaskManager/assets/55819473/c2318ee3-360f-4887-b19a-19bbdaa36954)
-![image](https://github.com/pracheesingh03/myTaskManager/assets/55819473/0907ac0d-22b6-4756-b138-cf4f1b62f94c)
-![image](https://github.com/pracheesingh03/myTaskManager/assets/55819473/b72a9bda-958a-4fbf-83d8-6b852ede708f)
-
-
 
  
