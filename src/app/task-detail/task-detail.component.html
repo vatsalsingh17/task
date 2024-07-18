@@ -1,0 +1,58 @@
+<div *ngIf="task">
+
+  <mat-card>
+    <mat-card-title class="title">
+      <div clas="row">
+        <p>TASK ID: {{ task.id }}</p>
+      </div>
+    </mat-card-title>
+  
+    <mat-card-subtitle class="subtitle">
+      <div clas="row">
+        <p>TASK TITLE: {{ task.title }}</p>
+      </div>
+    </mat-card-subtitle>
+ 
+    <mat-card-subtitle class="subtitle">
+      <div clas="row">
+        <p>TASK DESCRIPTION: {{ task.description }}</p>
+      </div>
+    </mat-card-subtitle>
+  </mat-card>
+  
+  <mat-card class="editDetailsButton">
+    <button color="primary" mat-raised-button (click)="edit()" *ngIf="flag==false">Edit details</button>
+  </mat-card>
+  <mat-card class="editDetailsButton">
+    <button color="primary" mat-raised-button routerLink="/tasks">BACK</button>
+  </mat-card>
+  
+  <mat-card *ngIf="flag==true">
+    <mat-card>
+      <mat-card-content>
+        <div class="add-row">
+          <div class="add-field">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" required minlength="10" placeholder="Edit Details" fxFlex="50" #details="ngModel" ngModel
+                name="taskDetails">
+            </mat-form-field>
+            <div *ngIf="details.invalid && (details.dirty || details.touched)">
+              <small *ngIf="details.errors?.['required']" class="warning">*Task details is required.</small>
+              <small *ngIf="details.errors?.['minlength']" class="warning">*Task details must be at least 10 characters
+                long.</small>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="editDetailsButton">
+      <button color="primary" mat-raised-button (click)="editdetails(task,details.value)"
+        [disabled]="!details.valid">SAVE</button>
+    </mat-card>
+  </mat-card>    
+</div>
+
+<div *ngIf="!task">
+  <p>Task not found.</p>
+</div>

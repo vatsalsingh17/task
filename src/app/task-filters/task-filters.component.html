@@ -1,0 +1,76 @@
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div class="add-field">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Filter by Priority</mat-label>
+                    <mat-select [(ngModel)]="priorityFilter" (change)="filterTasksByPriority(priorityFilter)">
+                        <mat-option value="">None</mat-option>
+                        <mat-option value="table-danger">High</mat-option>
+                        <mat-option value="table-warning">Medium</mat-option>
+                        <mat-option value="table-success">Low</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngFor="let t of tasks$| async">
+                    <tr class="{{t.priority}}" *ngIf="t.priority==priorityFilter">
+                        <td>{{t.id}}</td>
+                        <td>{{t.title}}</td>
+                        <td><button mat-raised-button color="primary" (click)="delete(t.id)">Delete</button></td>
+                        <td><button mat-raised-button color="primary" (click)="goTodetail(t.id)">View details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <div class="add-row">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="text" placeholder="Search Task (id/Title/Description)" [(ngModel)]='value'
+                        (change)="Searchtask()">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="list" *ngFor="let t of filteredSearch$| async">
+                    <tr class="{{t.priority}}">
+                        <td>{{t.id}}</td>
+                        <td>{{t.title}}</td>
+                        <td><button mat-raised-button color="primary" (click)="delete(t.id)">Delete</button></td>
+                        <td><button mat-raised-button color="primary" (click)="goTodetail(t.id)">View details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

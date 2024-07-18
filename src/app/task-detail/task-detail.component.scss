@@ -1,0 +1,32 @@
+.editDetailsButton {
+    padding: 10px;
+    outline: none;
+}
+
+.title {
+    padding-left: 20px;
+}
+
+.subtitle {
+    padding-left: 20px;
+}
+
+.warning {
+    color: red;
+}
+
+.add-field {
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.add-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.example-full-width {
+    width: 100%
+}

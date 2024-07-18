@@ -1,0 +1,48 @@
+.tasks {
+    background-color: lightgray;
+}
+
+.High {
+    background-color: lightcoral
+}
+
+.Medium {
+    background-color: lightgreen;
+}
+
+.Low {
+    background-color: lightblue;
+}
+
+.warning {
+    color: red;
+}
+
+.add-row {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    width: 100%;
+}
+
+.add-field {
+    flex: 1;
+    align-items: center;
+    width: 33%;
+    padding-left: 5px;
+}
+
+.table button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+}
+
+.addTaskButton {
+    padding: 10px;
+    outline: none;
+}
+
+.example-full-width {
+    width: 100%;
+}

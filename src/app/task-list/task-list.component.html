@@ -1,0 +1,71 @@
+
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div class="add-row">
+                <div class="add-field">
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" required minlength="5" placeholder="Enter Task Title" #task="ngModel" ngModel
+                            name="taskTitle">
+                    </mat-form-field>
+                    <div *ngIf="task.invalid && (task.dirty || task.touched)">
+                        <small *ngIf="task.errors?.['required']" class="warning">*Task title is required.</small>
+                        <small *ngIf="task.errors?.['minlength']" class="warning">*Task title must be at least 5 characters
+                            long.</small>
+                    </div>
+                </div>
+                
+                <div class="add-field">
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" required minlength="10" placeholder="Enter Task Details" #details="ngModel" ngModel
+                            name="taskDetails">
+                    </mat-form-field>
+                    <div *ngIf="details.invalid && (details.dirty || details.touched)">
+                        <small *ngIf="details.errors?.['required']" class="warning">*Task details is required.</small>
+                        <small *ngIf="details.errors?.['minlength']" class="warning">*Task details must be at least 10 characters
+                            long.</small>
+                    </div>
+                </div>
+
+                <div class="add-field">
+                    <mat-form-field class="example-full-width">
+                        <mat-select [(ngModel)]="selectedOption">
+                          <mat-option value="">Choose Task Priority</mat-option>
+                          <mat-option value="table-danger">High</mat-option>
+                          <mat-option value="table-warning">Medium</mat-option>
+                          <mat-option value="table-success">Low</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="addTaskButton">
+        <button color="primary" mat-raised-button disabled (click)="createtask(task.value,details.value); task.reset(); details.reset();"
+        [disabled]="!task.valid || !details.valid">Add new task</button>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">TASK ID</th>
+                            <th scope="col">TASK TITLE</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" *ngFor="let t of tasks$| async">
+                        <tr class="{{t.priority}}">
+                                <td>{{t.id}}</td>
+                                <td>{{t.title}}</td>
+                                <td><button mat-raised-button color="primary" (click)="delete(t.id)">Delete</button></td>
+                                <td><button mat-raised-button color="primary" (click)="goTodetail(t.id)">View details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </mat-card-content>
+    </mat-card>
+</div>
